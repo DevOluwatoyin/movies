@@ -9,7 +9,7 @@ const Home = () => {
         <span className="absolute top-0 left-0 w-full h-full bg-bg-transparent1"></span>
         <div className="relative w-full h-full space-y-6 md:space-y-11">
           <div className="w-full text-center font-bold space-y-6 md:pt-8">
-            <h1 className="text-3xl md:text-7xl">Welcome!</h1>
+            <h1 className="text-3xl md:text-7xl pt-9 lg:pt-0">Welcome!</h1>
             <p className="text-xl md:text-4xl max-w-4xl mx-auto">Discover and explore recent and trending Movies & TV Shows</p>
           </div>
           <SearchBox />
