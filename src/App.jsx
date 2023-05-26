@@ -4,7 +4,8 @@ import Popular from './components/Popular';
 import Trending from './components/Trending';
 import Series from './components/Series';
 import Navbar from './components/Navbar';
-import MovieDetails from './components/Movie';
+import { MovieDetails } from './components/Movie';
+// import MovieDetails from './components/Movie';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/trending" element={ <Trending /> } />
         <Route path="/series" element={<Series />} />
         <Route path="/movies/:id" element={<MovieDetails />} />
+        {/* <Route path="/series/:id" element={<SeriesDetailsPage />} /> */}
       </Routes>
     </Router>
   )

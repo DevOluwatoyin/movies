@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import MovieList from "../components/MovieList"
+import { MovieList1, MovieList2, MovieList3 } from "../components/MovieList"
 
 const Home = () => {
   return (
@@ -30,7 +30,31 @@ const Home = () => {
               <button className="bg-heart-color px-4 rounded-full">View all</button>
             </Link>
           </div>
-          <MovieList />
+          <MovieList1 />
+        </div>
+        <div className="popular max-w-4xl mx-auto mt-8">
+          <div className="flex justify-between space-x-4 items-center mb-8">
+            <div className="relative">
+              <h2 className="relative text-2xl font-bold pb-1">Popular Movies</h2>
+              <span className="line absolute w-full h-0.5 bottom-0"></span>
+            </div>
+            <Link to="/popular">
+              <button className="bg-heart-color px-4 rounded-full">View all</button>
+            </Link>
+          </div>
+          <MovieList3 />
+        </div>
+        <div className="series max-w-4xl mx-auto mt-8">
+          <div className="flex justify-between space-x-4 items-center mb-8">
+            <div className="relative">
+              <h2 className="relative text-2xl font-bold pb-1">Popular Series</h2>
+              <span className="line absolute w-full h-0.5 bottom-0"></span>
+            </div>
+            <Link to="/series">
+              <button className="bg-heart-color px-4 rounded-full">View all</button>
+            </Link>
+          </div>
+          <MovieList2 />
         </div>
       </div>
     </div>

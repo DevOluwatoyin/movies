@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const MovieDetails = () => {
+const api = 'd136620e549328df16c17b42f8f1d486';
+export const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [genres, setGenres] = useState([]);
-const api = 'd136620e549328df16c17b42f8f1d486';
 
   useEffect(() => {
     fetchMovieDetails();
@@ -24,7 +24,7 @@ const api = 'd136620e549328df16c17b42f8f1d486';
 
   const fetchGenres = async () => {
     try {
-      const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=YOUR_API_KEY');
+      const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api}}`);
       setGenres(response.data.genres);
     } catch (error) {
       console.error(error);
@@ -70,4 +70,40 @@ const api = 'd136620e549328df16c17b42f8f1d486';
   );
 };
 
-export default MovieDetails;
+// export const SeriesDetailsPage = ({ match }) => {
+//   const [series, setSeries] = useState(null);
+
+//  useEffect(() => {
+//     fetchSeriesDetails(match.params.id);
+//   }, [match.params.id]);
+
+//   const fetchSeriesDetails = async (id) => {
+//     try {
+//       const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${api}`);
+//       setSeries(response.data);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   if (!series) {
+//     return <div className="text-bg-color font-bold text-lg">Loading...</div>;
+//   }
+
+//   const { backdrop_path, name, first_air_date, overview } = series;
+
+//   return (
+//     <div>
+//       <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})` }}>
+//         <div>
+//           <h2>{name}</h2>
+//           <p>{first_air_date}</p>
+//         </div>
+//       </div>
+//       <div>
+//         <h3>Overview</h3>
+//         <p>{overview}</p>
+//       </div>
+//     </div>
+//   );
+// };
