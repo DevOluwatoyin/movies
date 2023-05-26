@@ -49,7 +49,7 @@ const Navbar = () => {
       <img src={logo} width={ 60 } alt="movie logo" />
       <ul className="hidden w-1/2 h-full justify-between items-center font-bold md:flex">
         {navItems.map((items, index) => (
-          <li className="hover:underline" key={index}>
+          <li className="hover:underline hover:text-heart-color-hover" key={index}>
             <Link className="lg:text-xl" to={items.path}>{items.name}</Link>
          </li>
        ))}
@@ -63,9 +63,9 @@ const Navbar = () => {
         }
       </button>
       {navOpen && (
-        <ul className="absolute bg-[#171717bb] w-full h-screen flex flex-col justify-center space-y-8 items-center font-bold top-20 left-0">
+        <ul className="absolute bg-[#171717bb] w-full h-screen flex flex-col justify-center space-y-8 items-center font-bold top-12 left-0">
         {navItems.map((items, index) => (
-          <li key={index}>
+          <li key={index} className="hover:text-heart-color-hover">
             <Link to={items.path}
             onClick={() => setNavOpen(false)}>{ items.name }</Link>
          </li>

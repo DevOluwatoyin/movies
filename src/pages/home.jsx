@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import { MovieList1, MovieList2, MovieList3 } from "../components/MovieList"
-
+import SearchBox from "../components/SearchBox"
 const Home = () => {
+
   return (
     <div className="pt-14">
       <div className="hero relative w-full h-[40vh]">
@@ -11,12 +12,7 @@ const Home = () => {
             <h1 className="text-3xl md:text-7xl">Welcome!</h1>
             <p className="text-xl md:text-4xl max-w-4xl mx-auto">Discover and explore recent and trending Movies & TV Shows</p>
           </div>
-          <form className="mx-4">
-            <div className="form-case max-w-3xl mx-auto grid grid-cols-[1fr] p-2 rounded-full place-content-center space-y-2 sm:grid-cols-[5fr_2fr] sm:space-y-0">
-              <input type="text" name="search" className="w-full h-12 px-8 rounded-full outline-none focus:ring-2 focus:ring-[#ff0000] focus:ring-opacity-50" placeholder="Search..." />
-              <button type="submit" className="btn w-full py-4 rounded-full text-center">Show me!</button>
-            </div>
-          </form>
+          <SearchBox />
         </div>
       </div>
       <div className="px-8 w-full h-full bg-bg-color pt-14 py-4">
