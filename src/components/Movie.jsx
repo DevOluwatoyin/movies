@@ -6,12 +6,10 @@ const api = 'd136620e549328df16c17b42f8f1d486';
 export const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
-  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     fetchMovieDetails();
-    fetchGenres();
-  }, []);
+  });
 
   const fetchMovieDetails = async () => {
     try {
@@ -22,46 +20,31 @@ export const MovieDetails = () => {
     }
   };
 
-  const fetchGenres = async () => {
-    try {
-      const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api}}`);
-      setGenres(response.data.genres);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  if (!movie || (!genres && genres.length === 0)) {
+  if (!movie) {
     return <div>Loading...</div>;
   }
 
   const { backdrop_path, title, release_date, overview, runtime, tagline } = movie;
 
-  // const genreNames = movie.genre_ids.map((genreId) => {
-  //   const genre = genres.find((genre) => genre.id === genreId);
-  //   return genre ? genre.name : '';
-  // });
-
   return (
-    <div className="">
+    <div className="pt-20 w-full md:h-screen bg-bg-transparent2">
       <div
-        className="relative w-full h-full lg:h-screen bg-cover flex items-center justify-center p-20"
+        className="relative w-full h-full bg-cover flex items-center justify-center lg:px-20"
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})` }}
       >
         <span className="absolute w-full h-full bg-bg-transparent2"></span>
-        <div className="mx-auto flex flex-col justify-between items-center w-[80%] h-3/4 text-white md:flex-row">
-          <div className="relative w-[90%] md:min-w-[100px] md:max-w-[400px] h-auto mx-5">
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={title} />
+        <div className="w-full mx-auto flex flex-col justify-between items-center md:max-w-7xl md:flex-row">
+          <div className="relative mx-5">
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={title} className=" w-[350px] md:max-w-1/3"  />
           </div>
-          <div className="relative w-[90%] md:min-w-[100px] md:max-w-[400px] h-auto mx-5">
+          <div className="relative mx-5 md:w-1/2">
             <h2 className="text-2xl font-bold">{title}</h2>
             <p>{release_date}</p>
-            <p>{tagline}</p>
-            {/* <p>Genre: {genreNames.join(', ')}</p> */}
+            <p className="italic">{tagline}</p>
           <div className="my-4">
           <h3 className="text-xl font-bold">Overview</h3>
               <p>{overview}</p>
-              <p>Runtime: {runtime} min</p>
+              <p><strong>Runtime:</strong> {runtime} min</p>
           </div>
           </div>
         </div>
@@ -69,41 +52,3 @@ export const MovieDetails = () => {
     </div>
   );
 };
-
-// export const SeriesDetailsPage = ({ match }) => {
-//   const [series, setSeries] = useState(null);
-
-//  useEffect(() => {
-//     fetchSeriesDetails(match.params.id);
-//   }, [match.params.id]);
-
-//   const fetchSeriesDetails = async (id) => {
-//     try {
-//       const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${api}`);
-//       setSeries(response.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-
-//   if (!series) {
-//     return <div className="text-bg-color font-bold text-lg">Loading...</div>;
-//   }
-
-//   const { backdrop_path, name, first_air_date, overview } = series;
-
-//   return (
-//     <div>
-//       <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${backdrop_path})` }}>
-//         <div>
-//           <h2>{name}</h2>
-//           <p>{first_air_date}</p>
-//         </div>
-//       </div>
-//       <div>
-//         <h3>Overview</h3>
-//         <p>{overview}</p>
-//       </div>
-//     </div>
-//   );
-// };

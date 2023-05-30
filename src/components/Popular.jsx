@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Popular = () => {
-  const [movies, setMovies] = useState([]);
+const [movies, setMovies] = useState([]);
 const api = 'd136620e549328df16c17b42f8f1d486';
 
 
