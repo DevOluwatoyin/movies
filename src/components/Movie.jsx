@@ -44,7 +44,7 @@ export const MovieDetails = () => {
           <div className="my-4">
           <h3 className="text-xl font-bold">Overview</h3>
               <p>{overview}</p>
-              <p><strong>Runtime:</strong> {runtime} min</p>
+              <p><strong>Runtime:</strong>{runtime} min</p>
           </div>
           </div>
         </div>
